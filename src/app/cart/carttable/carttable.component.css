@@ -1,0 +1,163 @@
+#intro {
+    background-image: url("../../../assets/img/hero-bg.jpg");
+    height: 110vh;
+    background-repeat: no-repeat;
+  }
+  
+  /* Height for devices larger than 576px */
+  @media (min-width: 992px) {
+    #intro {
+      margin-top: -70px;
+    }
+  }
+/* section{
+    position: relative;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    max-width: 1200px;
+    text-align: center;    
+} */
+table {
+    width: 100%;
+    max-width: 100%;
+    /* margin: 0 auto; */
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  border-color: wheat;
+  text-align: center;  
+  }
+  
+  th, td {
+    text-align: left;
+    /* padding: 8px; */
+  }
+  td{
+    background-color: #333;
+    color:wheat;
+  }
+  th {
+    background-color: #11111146;
+    padding-bottom:1.5%;
+    padding-top:1.5%;
+    color: #cda45e;
+  }
+ td:hover{
+    background-color: #333;
+ }
+  /* tr:nth-child(even) {
+    background-color: #1b1b1b;
+  } */
+  
+  .quantity {
+    display: flex;
+    align-items: center;
+  }
+ 
+  .quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 8px;
+  }
+  
+  .quantity-minus, .quantity-plus {
+    background-color: #f2f2f2;
+    border: none;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .quantity-plus {
+    padding: 0 8px;
+  }
+  
+  .quantity-minus:focus, .quantity-plus:focus {
+    outline: none;
+  }
+  
+  .quantity-minus:hover, .quantity-plus:hover {
+    background-color: #ddd;
+  }
+  .delete-button {
+    margin: 0 0 0 15px;
+  border: 2px solid #cda45e;
+  color: wheat;
+  border-radius: 50px;
+  padding: 8px 25px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  background-color: #1b1b1b;
+  }
+  
+  .delete-button:hover {
+    background: #cda45e;
+    color: #fff;
+  }
+  
+  .delete-button::before {
+    /* content: "X"; */
+    font-weight: bold;
+  }
+  .tableimg{
+   width:10rem;
+   padding-left:10px;
+  }
+  .checkout{
+   
+        margin: 0 0 0 15px;
+        border: 2px solid #cda45e;
+        color: wheat;
+        border-radius: 50px;
+        padding: 8px 25px;
+        text-transform: uppercase;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px;
+        transition: 0.3s;
+        background-color: #1b1b1b;
+     }
+     .checkout:hover{
+        background: #cda45e;
+        color: #fff;
+     }
+     .btn-checkout {
+      margin: 0 0 0 15px;
+      border: 2px solid #cda45e;
+      color: #fff;
+      border-radius: 50px;
+      padding: 8px 25px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      transition: 0.3s;
+      background-color: #1b1b1b;
+      transition: background-color 0.3s ease;
+    }
+    
+    .btn-checkout:hover {
+      background: #cda45e;
+      color: #fff;
+    }
+    .modal-content {
+      background-color: rgb(66, 63, 63);
+      color:#cda45e;
+  
+    }
+    .closetab{
+      color:#cda45e
+    }
+    .modalimg{
+      width:15rem;
+      padding:10px;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    } 

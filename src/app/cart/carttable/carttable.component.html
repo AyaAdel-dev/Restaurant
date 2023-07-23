@@ -1,0 +1,102 @@
+
+    <section class="d-flex align-items-center">
+        <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Image</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <!-- <td>{{}}</td> -->
+              </tr>
+              <tr *ngFor="let item of items; let i = index">
+               <td>{{i }}</td>
+                <td>
+                  <img [src]="item.image" class="tableimg" alt="Order Image">
+                </td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price | currency }}</td>
+                <td>
+                  <div class="quantity">
+                    <button class="quantity-minus" 
+                    (click)="decreaseQuantity(i)"
+                    >-</button>
+                    <!--   (click)="decreaseQuantity(i)" -->
+                    <input class="quantity-input" type="number" [(ngModel)]="item.quantity" min="1">
+                    <button class="quantity-plus" (click)="increaseQuantity(i)">+</button>
+                    <!-- (click)="increaseQuantity(i)" -->
+                  </div>
+                </td>
+                <td>
+                  {{item.subtotal | currency}}
+
+                </td>
+                <td>
+                  <button class="delete-button" (click)="removeItem(i)">X</button>
+                  <!--  (click)="deleteItem(i)" -->
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5"></td>
+                <td><strong>Total:</strong></td>
+                <td>{{ totalPrice | currency }}</td>
+              </tr>
+            </tbody>
+          </table>
+                   <div style="text-align: center;"><button [disabled]="items.length === 0" class="checkout"  data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Checkout</button></div> 
+                </div>
+            <!-- modal checkout -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Receipt</h5>
+                          <button type="button" class="close closetab" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <table class="table">
+                                  <tbody>
+                                    <tr *ngFor="let item of items">
+                                      <td>{{ item.name }}</td>
+                                      <td> {{item.subtotal | currency}}</td>
+                                    </tr>
+                                  
+                                    <tr>
+                                      <td class="total"><strong>Total</strong></td>
+                                      <td class="total-price"><strong>{{ totalPrice | currency }}</strong></td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div class="col-md-6">
+                                <img src="../../../assets/img/gallery/gallery-12.jpg" class="modalimg" alt="Image">
+                              </div>
+                            </div>
+                          </div>
+                        <div class="modal-footer">
+                         
+                          <button class="btn-checkout" (click)="checkout()">Proceed to Checkout</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </section>
+            <router-outlet></router-outlet>
+    <!-- </div>
+</div> -->
+
+
+
+   

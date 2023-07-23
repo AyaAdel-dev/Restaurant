@@ -1,0 +1,29 @@
+
+  p{
+    text-align: center;
+  }
+  a{
+    text-decoration: none;
+  }
+  
+  .add{
+    text-decoration: none;
+    color: antiquewhite;
+  }
+  .add:hover{
+    color:burlywood;
+    /* text-decoration: none; */
+  }
+  .addOrder{
+    background-color: rgb(26,24,20);
+    border: 2px solid rgb(26,24,20);
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.addOrder:hover{
+  background-color: rgba(59, 57, 53, 0.432);
+}

@@ -1,0 +1,101 @@
+<div id="intro" class="bg-image shadow-2-strong">
+    <div
+      class="mask d-flex align-items-center h-100"
+      style="background-color: rgba(0, 0, 0, 0.8)"
+    >
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-5 col-md-8">
+          <br> <br> <br> <br> <br> <br>
+  <div class="login-box">
+      <p>Sign Up</p>
+      <form [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()">
+        <div class="user-box">
+            <input required="" name="" type="text"
+            id="username"
+            formControlName="username"
+            class="form-control">
+            <label>Username</label>
+            <div
+            *ngIf="username?.touched && username?.invalid"
+            class="text-danger"
+          >
+            <div *ngIf="username?.errors?.['required']">
+              Username is required
+            </div>
+            <div *ngIf="username?.errors?.['minlength']">
+              Username must be at least
+              {{ username?.errors?.['minlength'].requiredLength }}
+              characters long
+            </div>
+          </div>
+          </div>
+        <div class="user-box">
+          <input required="" name=""  type="email"
+          id="email"
+          formControlName="email"
+          class="form-control">
+          <label>Email</label>
+          <div
+          *ngIf="email?.touched && email?.invalid"
+          class="text-danger"
+        >
+          <div *ngIf="email?.errors?.['required']">
+            Email is required
+          </div>
+          <div *ngIf="email?.errors?.['email']">
+            Invalid email format
+          </div>
+        </div>
+        </div>
+        <div class="user-box">
+          <input required="" name="" type="password"
+          id="password"
+          formControlName="password"
+          class="form-control">
+          <label>Password</label>
+          <div
+          *ngIf="password?.touched && password?.invalid"
+          class="text-danger"
+        >
+          <div *ngIf="password?.errors?.['required']">
+            Password is required
+          </div>
+          <div *ngIf="password?.errors?.['minlength']">
+            Password must be at least
+            {{ password?.errors?.['minlength'].requiredLength }}
+            characters long
+          </div>
+        </div>
+        </div>
+        <div class="user-box">
+            <input required="" name=""  type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-control">
+            <label>Confirm Password</label>
+            <div
+            *ngIf="confirmPassword?.touched && confirmPassword?.invalid"
+            class="text-danger"
+          >
+            <div *ngIf="confirmPassword?.errors?.['required']">
+              Confirm password is required
+            </div>
+            <div *ngIf="confirmPassword?.errors?.['matchPassword']">
+              Passwords do not match
+            </div>
+          </div>
+          </div>
+          <br>
+          <button class="btn-checkout" type="submit"
+          [disabled]="registerForm.invalid" >Submit</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <app-footer></app-footer>
+  </div>
+ 

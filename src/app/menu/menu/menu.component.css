@@ -1,0 +1,37 @@
+.scroll-container {
+    height: calc(117vh - 180px); /* adjust the height to fit your navbar and footer */
+    overflow-y: auto;
+    /* padding-top:50px; */
+    /* padding: 20px; */
+    background-color: rgb(26,24,20);
+  }
+  .main{
+    color:black;
+    height: 100%;
+    width: 110%;
+    margin-top: 50px;
+  }
+  p{
+    text-align: center;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Set the style of the scrollbar track */
+  ::-webkit-scrollbar-track {
+    background-color: rgb(26,24,20);
+  }
+  
+  /* Set the style of the scrollbar thumb */
+  ::-webkit-scrollbar-thumb {
+    background-color:rgb(26,24,20);
+    border-radius: 5px;
+  }
+  
+  /* Set the style of the scrollbar thumb when hovering over it */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color:rgb(26,24,20);
+  }
+ 

@@ -1,0 +1,13 @@
+<div>
+    <ng-container *ngIf="loggedInAsUser">
+      <app-navbar></app-navbar>
+      <app-startpage></app-startpage>
+    </ng-container>
+  
+    <ng-container *ngIf="!loggedInAsUser ">
+      <app-startpage></app-startpage>
+    </ng-container>
+    <!-- <ng-container *ngIf="loggedInAsAdmin">
+      <app-adminscreen></app-adminscreen>
+    </ng-container> -->
+  </div>
