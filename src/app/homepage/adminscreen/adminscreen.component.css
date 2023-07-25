@@ -57,4 +57,42 @@ table {
    button:hover {
     color: white;
    }
-   
+   .modal-content {
+    background-color: rgb(66, 63, 63);
+    color:#cda45e;
+
+  }
+  .closetab{
+    color:#cda45e
+  }
+  .modalimg{
+    width:15rem;
+    padding:10px;
+  }
+  .tableModal {
+    width: 100%;
+    max-width: 100%;
+    /* margin: 0 auto; */
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+  border-color: wheat;
+  text-align: center;  
+  }
+  
+  .thModal, .tdModal {
+    text-align: left;
+    /* padding: 8px; */
+  }
+  .tdModal{
+    background-color: #333;
+    color:wheat;
+    text-align: center;
+  }
+  .thModal {
+    background-color: #11111146;
+   text-align: center;
+    color: #cda45e;
+  }
+ .tdModal:hover{
+    background-color: #333;
+ }

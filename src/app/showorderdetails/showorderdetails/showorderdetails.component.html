@@ -1,27 +1,43 @@
-<app-navbar></app-navbar>
-<br>
-<section class="aboutt">
-    <div class="container" data-aos="fade-up">
-
-      <div class="row">
-        <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
-          <div class="about-img">
-            <img src="assets/img/about.jpg" alt="">
-          </div>
-        </div>
-        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-          <h3>Username</h3>
-          <br>
-          <ul>
-            <li><i class="bi bi-check-circle"></i> item name</li>
-            <li><i class="bi bi-check-circle"></i> item price</li>
-            <li><i class="bi bi-check-circle"></i> item quantity</li>
-            <li><i class="bi bi-check-circle"></i> item category</li>
-            <li><i class="bi bi-check-circle"></i> item description</li>
-          </ul>
-        </div>
-      </div>
-
+<div style="background-color:#333;height:100vh;">
+  <app-navbar></app-navbar>
+  <section class="d-flex align-items-center ">
+    <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+      <br>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of order?.itemsObj; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>
+              <img [src]="item?.image" class="tableimg" alt="Order Image">
+            </td>
+            <td>
+              {{ item?.name }}
+            </td>
+            <td>
+              {{ item?.price | currency }}
+            </td>
+            <td>
+              {{ item?.quantity }}
+            </td>
+            <td>{{ item?.totalprice | currency }}</td>
+          </tr>
+          <tr>
+            <td colspan="5"></td>
+            <td><strong>Total:</strong></td>
+            <td>{{ order?.totalPrice | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
-  <app-footer></app-footer>
+</div>

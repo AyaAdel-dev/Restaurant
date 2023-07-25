@@ -36,7 +36,7 @@ const routes: Routes = [
     component: AdminscreenComponent,
   },
   {
-    path: "showOrder",
+    path:'showOrder/:id',
     canActivate: [adminGuard],
     component: ShoworderdetailsComponent,
   },

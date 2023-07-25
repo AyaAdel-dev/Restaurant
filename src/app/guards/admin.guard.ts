@@ -13,7 +13,7 @@ export class adminGuard implements CanActivate {
     if (this.loginService.isAuth$ && this.loginService.isAuth$.value.Role === 'admin' && this.loginService.isAuth$.value.isAuthorized) {
       return true;
     } else {
-      this.router.navigateByUrl('/adminscreen');
+      this.router.navigateByUrl('/mainpage');
       return false;
     }
   }
