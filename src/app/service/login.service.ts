@@ -30,6 +30,8 @@ export class LoginService {
   }
 
   public logout(): void {
+    localStorage.removeItem('loggedInAsAdmin')
+     localStorage.removeItem('loggedInAsUser')
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     this.authorized.isAuthorized = false;

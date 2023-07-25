@@ -1,0 +1,58 @@
+#intro {
+  background-image: url("../../../assets/img/hero-bg.jpg");
+  height: 110vh;
+  background-repeat: no-repeat;
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #intro {
+    margin-top: -70px;
+  }
+}
+/* section{
+  position: relative;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  max-width: 1200px;
+  text-align: center;    
+} */
+table {
+  width: 100%;
+  max-width: 100%;
+  /* margin: 0 auto; */
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+border-color: wheat;
+text-align: center;  
+}
+
+th, td {
+  text-align: left;
+  /* padding: 8px; */
+}
+td{
+  background-color: #333;
+  color:wheat;
+}
+th {
+  background-color: #11111146;
+  padding-bottom:1.5%;
+  padding-top:1.5%;
+  color: #cda45e;
+}
+td:hover{
+  background-color: #333;
+}
+/* tr:nth-child(even) {
+  background-color: #1b1b1b;
+} */
+
+
+.tableimg{
+ width:10rem;
+ padding-left:10px;
+}
+

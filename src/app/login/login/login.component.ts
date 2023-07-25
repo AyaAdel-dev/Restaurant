@@ -53,7 +53,7 @@ export class LoginComponent {
           }else{
             localStorage.setItem('loggedInAsUser', 'false');
             localStorage.setItem('loggedInAsAdmin', 'true');
-            this.router.navigateByUrl("/adminscreen");
+            this.router.navigateByUrl("/mainpage");
           }
         },
         error: (error) => {

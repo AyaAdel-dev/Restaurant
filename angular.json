@@ -80,6 +80,7 @@
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
             "browserTarget": "resturant:build"
+            
           }
         },
         "test": {

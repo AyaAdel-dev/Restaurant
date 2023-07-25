@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Authorized } from 'src/app/_module/authorized';
 import { LoginService } from 'src/app/service/login.service';
 
@@ -10,7 +11,7 @@ import { LoginService } from 'src/app/service/login.service';
 export class NavbarComponent {
   public authorized: Authorized = new Authorized("", false);
 
-  constructor(private authService: LoginService) {}
+  constructor(private authService: LoginService,private router: Router) {}
   ngOnInit(): void {
     this.authService.isAuth$.subscribe((value) => {
       this.authorized.Role = value.Role;
@@ -28,5 +29,6 @@ export class NavbarComponent {
   }
   logout() {
     this.authService.logout();
+    this.router.navigateByUrl("/mainpage");
   }
 }

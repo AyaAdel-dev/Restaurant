@@ -4,10 +4,10 @@
       <app-startpage></app-startpage>
     </ng-container>
   
-    <ng-container *ngIf="!loggedInAsUser ">
+    <ng-container *ngIf="!loggedInAsUser && !loggedInAsAdmin ">
       <app-startpage></app-startpage>
     </ng-container>
-    <!-- <ng-container *ngIf="loggedInAsAdmin">
+    <ng-container *ngIf="loggedInAsAdmin">
       <app-adminscreen></app-adminscreen>
-    </ng-container> -->
+    </ng-container>
   </div>
