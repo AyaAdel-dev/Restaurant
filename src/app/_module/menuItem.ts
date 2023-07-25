@@ -1,6 +1,6 @@
 export class MenuItem {
     constructor(
-      public id?: number,
+      public Id?: number,
       public name?: string,
       public category?: string,
       public description?: string,

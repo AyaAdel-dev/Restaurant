@@ -1,4 +1,5 @@
 export class OrderDto {
+  orderId: number | undefined;
   constructor(
     public id?: number,
     public userId?: number,

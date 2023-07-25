@@ -107,7 +107,6 @@ export class CarttableComponent implements OnInit {
           console.log('order created successfully');
           localStorage.removeItem('orders');
           alert('Bon Appetit ♥ ');
-        //   this.route.navigateByUrl("/mainpage");
           window.location.reload();
         },
         (error) => {

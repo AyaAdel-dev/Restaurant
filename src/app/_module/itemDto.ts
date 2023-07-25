@@ -1,6 +1,6 @@
 export class ItemDto {
     constructor(
-      public Id?: number,
+      public id?: number,
       public itemId?:number,
       public name?: string,
       public category?: string,

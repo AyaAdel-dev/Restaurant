@@ -11,7 +11,7 @@ import { CartModule } from './cart/cart.module';
 import { AboutUsModule } from './about-us/about-us.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ShoworderdetailsModule } from './showorderdetails/showorderdetails.module';
-// import jwt_decode from 'jwt-decode'; 
+import { ShowitemdetailsModule } from './showitemdetails/showitemdetails.module';
 
 
 
@@ -35,7 +35,8 @@ import { ShoworderdetailsModule } from './showorderdetails/showorderdetails.modu
         AboutUsModule,
         HttpClientModule,
         RouterModule,
-        ShoworderdetailsModule
+        ShoworderdetailsModule,
+        ShowitemdetailsModule
     ]
 })
 export class AppModule {}

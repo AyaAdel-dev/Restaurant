@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { OrderDto } from 'src/app/_module/orderdto';
-import { OrderService } from 'src/app/service/order.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { OrderDto } from '../../_module/orderdto';
+import { OrderService } from '../../service/order.service';
 
 @Component({
   selector: 'app-showorderdetails',
@@ -10,43 +9,33 @@ import { OrderService } from 'src/app/service/order.service';
   styleUrls: ['./showorderdetails.component.css']
 })
 export class ShoworderdetailsComponent implements OnInit {
-  orderId: number | undefined;
-  order: OrderDto | undefined;
-  sub: Subscription | null = null;
-totalprice:number | undefined
+  orders: OrderDto[] = [];
+
   constructor(
+    private orderService: OrderService,
     private route: ActivatedRoute,
-    private orderService: OrderService
+    private router: Router
   ) {}
 
-  ngOnInit(): void {
-    this.sub = this.route.paramMap.subscribe((params) => {
-      const orderIdStr = params.get('id');
-      if (orderIdStr) {
-        this.orderId = +orderIdStr;
-        if (this.orderId !== undefined) {
-          this.getOrderDetails(this.orderId);
+  
+  ngOnInit() {
+    const orderId = Number(this.route.snapshot.paramMap.get('id'));
+    if (!isNaN(orderId)) {
+      this.orderService.getOrderDetails(orderId).subscribe(
+        (orders: OrderDto[] | undefined) => {
+          if (orders) { // Check if orders is defined
+            this.orders = orders;
+            console.log('Orders:', orders);
+          }
+        },
+        (error: any) => {
+          console.error('Error getting order details:', error);
+          // Add error handling code here
         }
-      }
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.sub) {
-      this.sub.unsubscribe();
+      );
+    } else {
+      console.error('Invalid order ID:', orderId);
+      // Add error handling code here
     }
-  }
-
-  getOrderDetails(orderId: number): void {
-    this.orderService.getOrderDetails(orderId).subscribe(
-      (order: OrderDto) => {
-        this.order = order;
-       console.log(order.totalPrice)
-      },
-      (error: any) => {
-        console.error('Error getting order details:', error);
-        // Add error handling code here
-      }
-    );
   }
 }

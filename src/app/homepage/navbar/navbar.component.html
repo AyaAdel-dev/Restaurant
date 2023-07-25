@@ -24,8 +24,11 @@
           <li class="nav-item" *ngIf="authorized.isAuthorized && authorized.Role == 'user'">
             <a class="nav-link " routerLink="/cart" ><i class="bi bi-cart-fill icon-large"></i></a>
           </li>
+          <!-- <li class="nav-item" *ngIf="authorized.isAuthorized && authorized.Role == 'user'">
+            <a class="nav-link " routerLink="/showitem" ><i class="bi bi-cart-fill icon-large"></i></a>
+          </li> -->
           <li class="nav-item" *ngIf="authorized.isAuthorized && authorized.Role == 'admin'">
-            <a class="nav-link scrollto" routerLink="/showOrder">Details</a>
+            <a class="nav-link scrollto" routerLink="/mainpage">Panel</a>
           </li>
           <span style="padding-left:80%;">
             <li class="nav-item" >

@@ -11,6 +11,7 @@ import { AdminscreenComponent } from './homepage/adminscreen/adminscreen.compone
 import { userGuard } from './guards/user.guard';
 import { adminGuard } from './guards/admin.guard';
 import { ShoworderdetailsComponent } from './showorderdetails/showorderdetails/showorderdetails.component';
+import { ShowitemdetailsComponent } from './showitemdetails/showitemdetails/showitemdetails.component';
 const routes: Routes = [
  { path: "",
     redirectTo: "mainpage",
@@ -24,6 +25,11 @@ const routes: Routes = [
     path: "cart",
     canActivate: [userGuard],
     component: CartComponent,
+  },
+  {
+    path: "showitem/:id",
+    canActivate: [userGuard],
+    component: ShowitemdetailsComponent,
   },
   {
     path: "startpage",
