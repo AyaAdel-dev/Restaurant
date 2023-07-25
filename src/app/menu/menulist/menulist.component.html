@@ -17,10 +17,10 @@
     </div>
 
     <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-      <div class="col-lg-6 menu-item" *ngFor="let menuItem of menuItems" [ngClass]="'filter-' + menuItem.category">
+      <div class="col-lg-6 menu-item" *ngFor="let menuItem of menuItems let i=index" [ngClass]="'filter-' + menuItem.category">
         <img [src]="menuItem.image" class="menu-img" alt="">
         <div class="menu-content">
-          <a href="#">{{ menuItem.name  }}</a><span>{{ menuItem.price |currency }}</span>
+          <a  href="#">{{ menuItem.name  }}</a><span>{{ menuItem.price |currency }}</span>
           <br>
           <button  class="add addOrder"(click)="addOrder(menuItem)">Add Order</button>
         </div>

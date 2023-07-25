@@ -98,11 +98,13 @@ onAll(){
         }
       );
     }
-
+    viewItemDetails(itemId: number) {
+      this.route.navigate(['/showitem', itemId]);
+    }
     addOrder(menuItem: MenuItem) {
       const orders = JSON.parse(localStorage.getItem('orders') || '[]');
       const order = {
-        id: menuItem.id,
+        id: menuItem.Id,
         name: menuItem.name,
         price: menuItem.price,
         image:menuItem.image,

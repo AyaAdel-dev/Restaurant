@@ -13,7 +13,12 @@ export class OrderService {
   
   private readonly baseurl: string = 'https://localhost:7129/api/Order';
   private readonly getOrdrt:string='https://localhost:7129/api';
+  private readonly getitem:string='https://localhost:7129';
   constructor(private http: HttpClient,private userService:UserService) {}
+
+  getItemDetails(itemId: number): Observable<any> {
+    return this.http.get<any>(`${this.getOrdrt}/Items/${itemId}`);
+  }
 
   add(token: string, order: any): Observable<OrderDto> {
     const headers = new HttpHeaders({
@@ -47,42 +52,60 @@ getAllOrders(): Observable<OrderDto[]> {
   );
 }
 
-getOrderDetails(orderId: number): Observable<OrderDto> {
-  const orderItemsUrl = `${this.getOrdrt}/Order/${orderId}`;
+getOrderDetails(orderId: number): Observable<OrderDto[]> {
+  const orderItemsUrl = `${this.getitem}/items/${orderId}`;
 
   return this.http.get<OrderItemDto[]>(orderItemsUrl).pipe(
     switchMap((orderItems) => {
       if (!Array.isArray(orderItems)) {
         orderItems = [orderItems];
-        console.log(orderItems);
       }
-      const itemIds = orderItems.map((item) => item.itemId);
-      const itemsUrl = `${this.getOrdrt}/items/${itemIds.join(',')}`;
 
-      return this.http.get<ItemDto[]>(itemsUrl).pipe(
+      // Get the itemIds for the order
+      const itemIds = orderItems.map(item => item.itemId);
+
+      // Fetch the corresponding ItemDto objects from the server
+      const itemsRequests = itemIds.map(itemId => {
+        const itemsUrl = `${this.getOrdrt}/Items/${itemId}`;
+        console.log(itemsUrl)
+        return this.http.get<ItemDto>(itemsUrl);
+      });
+
+      return forkJoin(itemsRequests).pipe(
         map((items) => {
+          // Create an array of order items with the corresponding ItemDto objects
           const orderItemsWithItems = orderItems.map((orderItem) => {
-            const item = items.find((item) => item.Id === orderItem.itemId);
-            console.log( orderItem.itemId);
+            console.log(items);
+            const item = items.find(item => item.id && orderItem.itemId === item.id);
+            console.log(item)
+            if (!item) {
+              console.warn(`Item not found for itemId: ${orderItem.id}`);
+            }
             const quantity = orderItem.quantity ?? 0;
-            console.log(quantity)
             return {
               id: item?.itemId,
               name: item?.name,
-              category: item?.category,
-              description: item?.description,
-              price: item?.price,
+              price: item?.price ?? 0,
               image: item?.image,
               quantity,
-              totalprice:orderItem.totalPrice,
+              totalprice: (item?.price ?? 0) * quantity,
             };
           });
+
+          // Create an OrderDto object for the order
           const orderDto: OrderDto = {
             id: orderId,
             itemsObj: orderItemsWithItems,
+            totalPrice: orderItemsWithItems.reduce((acc, item) => acc + item.totalprice, 0),
+            orderId: orderId
           };
-          console.log(orderDto)
-          return orderDto;
+
+          // Return an array containing the OrderDto object
+          return [orderDto];
+        }),
+        catchError((error: any) => {
+          console.error('Error getting order items:', error);
+          return throwError(error);
         })
       );
     }),
@@ -92,4 +115,5 @@ getOrderDetails(orderId: number): Observable<OrderDto> {
     })
   );
 }
+
 }
